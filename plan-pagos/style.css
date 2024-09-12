@@ -1,0 +1,227 @@
+:root{
+    --50: #fdf3ff;
+    --100: #fae2ff;
+    --200: #f5cbff;
+    --300: #eea2ff;
+    --400: #e367ff;
+    --500: #da2dff;
+    --600: #cf06ff;
+    --700: #bb00f8;
+    --800: #8e00b6;
+    --900: #8002a1;
+    --950: #5b007b;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+.pagos-principal{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    background-image: url(./images/fondo-pagos.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.barra-superior{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 155px;
+}
+
+.barra-superior a{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.barra-superior a svg{
+    color: white;
+    width: 90%;
+    height: 90%;
+}
+
+.barra-superior .titulo{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.titulo h1{
+    color: white;
+    font-size: 35px;
+}
+
+.planes{
+    width: 100%;
+    height: 86vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 110px;
+}
+
+.planes .cartas{
+    border-radius: 12px;
+    width: 344px;
+    height: 445px;
+    background-color: #1E1E1E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 17.5px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+}
+
+.cartas .tipo-plan{
+    border-bottom: 3px solid ghostwhite;
+    width: 100%;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tipo-plan label{
+    color: white;
+    font-size: 19px;
+}
+
+.contenido{
+    width: 95%;
+    height: 367px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.contenido .descripcion-plan{
+    width: 100%;
+    height: 277px;
+}
+
+.contenido .titulo-plan{
+    width: 100%;
+    height: 87px;
+}
+
+.titulo-plan h3{
+    width: 100%;
+    height: 56px;
+    display: flex;
+    font-size: 19px;
+}
+
+.titulo-plan h3 b{
+    width: 80%;
+    height: 100%;
+    color: white;
+}
+
+.titulo-plan h3 .precio{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.titulo-plan .texto{
+    color: rgb(203, 203, 203);
+}
+
+.descripcion-plan .detalles{
+    width: 100%;
+    height: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.detalles .dias-revisiones{
+    width: 100%;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 25px;
+}
+
+.dias-revisiones .dias{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 5px;
+    color: gray;
+}
+
+.dias-revisiones .revisiones{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 5px;
+    color: gray;
+}
+
+
+.detalles .caracteristicas{
+    width: 100%;
+    height: 140px;
+    list-style: url(./images/check.svg);
+    margin-left: 38px;
+    color: white;
+}
+
+.contenido .btn-comprar{
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-comprar .boton{
+    width: 75%;
+    height: 50px;
+    background-color: var(--800);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.boton a{
+    color: white;
+    text-decoration: none;
+}
+
+.boton svg{
+    color: white;
+    width: 20px;
+    height: 20px;
+}

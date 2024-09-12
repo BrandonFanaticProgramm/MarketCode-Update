@@ -1,0 +1,547 @@
+:root{
+    --50: #fdf3ff;
+    --100: #fae2ff;
+    --200: #f5cbff;
+    --300: #eea2ff;
+    --400: #e367ff;
+    --500: #da2dff;
+    --600: #cf06ff;
+    --700: #bb00f8;
+    --800: #8e00b6;
+    --900: #8002a1;
+    --950: #5b007b;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+.logo{
+    width: 130px;
+    height: 130px;
+    background-image: url(./images/logo.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 15px;
+}
+
+.principal{
+    width: 100vw;
+    height: 100vh;
+    background-image: url(./images/fondo-inicio.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.botones-navegacion{
+    width: 95%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-left: 35px;
+}
+
+.botones-navegacion .btns-izquierda{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 70px;
+    margin-right: 100px;
+}
+
+.botones-navegacion .btns-izquierda li{
+    margin-right: 20px;
+    width: 115px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.5s;
+    border-radius: 30px;
+}
+
+.botones-navegacion .btns-izquierda li a{
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.5s;
+}
+
+.botones-navegacion .btns-izquierda li a:hover{
+    transition: 0.5s;
+    font-size: 17px;
+    color: var(--500);
+}
+
+.botones-navegacion .btns-derecha{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.botones-navegacion .btns-derecha li{
+    border: 3px solid var(--800);
+    margin-right: 20px;
+    width: 135px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.botones-navegacion .btns-derecha li:hover{
+    transition: 0.5s;
+    border: 3px solid var(--800);
+    color: var(--800);
+    color: white;
+    background-color: var(--800);
+
+
+    &&{
+        a:hover{
+            transition: 0.5s;
+            color: white;
+        }
+    }
+}
+
+.botones-navegacion .btns-derecha li a{
+    color: var(--500);
+    text-decoration: none;
+    font-size: 15px;
+    width: 135px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s
+}
+
+.botones-navegacion .btns-derecha .btn-registrar{
+    background-color: var(--800);
+    color: white;
+}
+
+.botones-navegacion .btns-derecha .btn-registrar a{
+    border-radius: 12px;
+    transition: 0.5s;
+    color: white;
+}
+
+.botones-navegacion .btns-derecha .btn-registrar a:hover{
+    background-color: var(--950);
+    transition: 0.5s;
+}
+
+.contenido{
+    height: 630px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+}
+
+.introduccion{
+    width: 50%;
+    height: 60%;
+    margin-top: 50px;
+    margin-right: 680px;
+    position: absolute;
+}
+
+.introduccion h1{
+    font-size: 65px;
+    color: white;
+}
+
+.introduccion p{
+    color: rgb(200, 200, 200);
+    font-size: 20px;
+}
+
+.introduccion .boton-vermas{
+    width: 150px;
+    height: 50px;
+    border: 3px solid var(--800);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 35px;
+    cursor: pointer;
+    transition: 0.5s;
+
+}
+
+.introduccion .boton-vermas:hover{
+    transition: 0.5s;
+    border: 3px solid var(--800);
+    background-color: var(--800);
+    color: white;
+
+    &{
+        a:hover{
+            transition: 0.5s;
+            color: white;
+        }
+    }
+}
+
+.introduccion .boton-vermas a{
+    text-decoration: none;
+    color: var(--800);
+    font-size: 18px;
+}
+
+.contenido .ilustracion{
+    width: 480px;
+    height: 480px;
+    margin-top: 50px;
+    margin-left: 750px;
+    background-image: url(./images/ilustracion.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/* -----------------------SEGUNDA SECCION--------------------------- */
+
+
+.informacion{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    flex-direction: row;
+    background-image: url(./images/fondo-perfiles.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.presentacion{
+    width: 550px;
+    height: 230px;
+    margin-top: 70px;
+    margin-left: 25px;
+}
+
+.presentacion h1{
+    color: white;
+    font-size: 40px;
+}
+
+.presentacion h1 strong{
+    color: var(--800);
+}
+
+.presentacion p{
+    color: rgb(197, 197, 197);
+    font-size: 22px;
+}
+
+.cartas{
+    width: 800px;
+    height: 400px;
+    margin-top: 70px;
+    margin-left: 700px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2,380px);
+    position: absolute;
+}
+
+.cartas article{
+    margin-bottom: 10px;
+    width: 350px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: rgb(30,30,30);
+    border-radius: 12px;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,1);
+}
+
+.cartas article .foto{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-left: 20px;
+    background-image: url(./images/per.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.cartas article .info{
+    width: 235px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.cartas article .info .nombre{
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+
+.calificacion{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.calificacion svg{
+    width: 16px;
+    height: 16px;
+    color: orange;
+}
+
+.calificacion p{
+    color: white;
+}
+
+.info .tecnologias{
+    color: rgb(200, 200, 200);
+    margin-top: 20px;
+    text-align: center;
+}
+
+.info button{
+    width: 125px;
+    height: 45px;
+    margin-top: 25px;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    background: var(--700);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.info button:hover{
+    background: var(--800);
+}
+
+.perfil-detallado{
+    display: none;
+    width: 40%;
+    height: 80%;
+    top: 0;
+    left: 0;
+    margin-left: 30%;
+    margin-top: 5%;
+    z-index: 1001;
+    overflow: auto;
+    position: fixed;
+    border-radius: 12px;
+    background-color: rgb(30,30,30);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+}
+
+.perfil-detallado .boton-cerrar{
+    border: none;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    color: var(--600);
+    cursor: pointer;
+    position: absolute;
+    margin-right: 580px;
+    margin-bottom: 200px;
+    border-radius: 8px;
+    transition: 0.5s;
+}
+
+.perfil-detallado .boton-cerrar:hover{
+    background-color: var(--700);
+    color: white;
+    border-radius: 8px;
+}
+
+.perfil-detallado .info-personal{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.perfil-detallado .foto{
+    width: 25%;
+    height: 65%;
+    border: 3px solid var(--950);
+    border-radius: 50%;
+}
+
+.perfil-detallado .datos{
+    width: 100%;
+    height: 15%;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+    color: rgb(236, 236, 236);
+}
+
+.descripcion-tecnologias .descripcion{
+    color: rgb(158, 158, 158);
+    width: 95%;
+    margin-left: 15px;
+    font-size: 15px;
+}
+
+.tecnologias{
+    width: 100%;
+    height: 120px;
+}
+
+.tecnologias h3{
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    color: var(--900);
+    margin-top: 20px;
+    text-decoration-line: underline;
+}
+
+.tecnologias ul{
+    width: 100%;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.tecnologias ul li{
+    width: 80px;
+    height: 25px;
+    list-style: none;
+    color: var(--200);
+    font-size: 14px;
+    background-color: rgb(86, 86, 86);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.enlaces{
+    width: 100%;
+    height: 130px;
+}
+
+.enlaces h3{
+    width: 100%;
+    height: 25px;
+    text-align: center;
+    color: var(--800);
+    text-decoration-line: underline;
+}
+
+.enlaces .contratar{
+    width: 100%;
+    height: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+}
+
+.contratar ul{
+    width: 120px;
+    height: 50px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20%;
+}
+
+.contratar ul li a svg{
+    width: 30px;
+    height: 30px;
+    color: var(--700);
+    transition: 0.5s;   
+}
+
+.contratar ul li a svg:hover{
+    transition: 0.5s;
+    color: var(--900);
+}
+
+.contratar .btn-contrato{
+    width: 120px;
+    height: 50px;
+    border-radius: 12px;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--800);
+    text-decoration: none;
+    border: none;
+    transition: 0.5s;
+}
+
+.contratar .btn-contrato:hover{
+    transition: 0.5s;
+    background-color: var(--900);
+}
+
+.fondo-oscuro {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+    z-index: 1000; 
+}
+.footer-page p {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5em;
+}
+.footer-page a > i {
+
+    color: #6d42c7;
+    text-decoration: none;
+    font-size: 32px;
+    margin-top: 12px;
+}
+

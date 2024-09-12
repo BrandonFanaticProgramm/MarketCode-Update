@@ -1,0 +1,362 @@
+:root {
+  --50: #fdf3ff;
+  --100: #fae2ff;
+  --200: #f5cbff;
+  --300: #eea2ff;
+  --400: #e367ff;
+  --500: #da2dff;
+  --600: #cf06ff;
+  --700: #bb00f8;
+  --800: #8e00b6;
+  --900: #8002a1;
+  --950: #5b007b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+}
+
+.contenedor {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.header-title {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 300px;
+}
+
+.filter-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.main-programadores {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.carta {
+  margin-bottom: 10px;
+  width: 350px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  background-color: rgb(30, 30, 30);
+  border-radius: 12px;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 1);
+}
+
+.carta .foto {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-left: 20px;
+  background-color: var(--900);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.carta .info {
+  width: 235px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.carta .info .nombre {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+
+.calificacion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.calificacion svg {
+  width: 16px;
+  height: 16px;
+  color: orange;
+}
+
+.calificacion p {
+  color: white;
+}
+
+.info .tecnologias {
+  color: rgb(200, 200, 200);
+  margin-top: 20px;
+  text-align: center;
+}
+
+.info button {
+  width: 125px;
+  height: 45px;
+  margin-top: 25px;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  background: var(--700);
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.info button:hover {
+  background: var(--800);
+}
+
+.main-programadores .calificacion {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ffc107;
+  margin: 0.5rem 0;
+}
+
+.main-programadores .calificacion p.estrellas {
+  margin: 0;
+  font-size: 1rem; /* Ajusta el tamaño de la calificación según sea necesario */
+}
+
+.main-programadores .calificacion svg {
+  width: 16px; /* Ajusta el tamaño del ícono SVG si es necesario */
+  height: 16px;
+  fill: #ffc107;
+  margin-left: 0.25rem; /* Espacio entre el texto y la estrella */
+}
+
+.info .tecnologias {
+  color: rgb(200, 200, 200);
+  margin-top: 20px;
+  text-align: center;
+}
+
+.info button {
+  width: 125px;
+  height: 45px;
+  margin-top: 25px;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  background: var(--700);
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.info button:hover {
+  background: var(--800);
+}
+
+.perfil-detallado {
+  display: none;
+  width: 40%;
+  height: 80%;
+  top: 0;
+  left: 0;
+  margin-left: 30%;
+  margin-top: 5%;
+  z-index: 1001;
+  overflow: auto;
+  position: fixed;
+  border-radius: 12px;
+  background-color: rgb(30, 30, 30);
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+}
+
+.perfil-detallado .boton-cerrar {
+  border: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  color: var(--600);
+  cursor: pointer;
+  position: absolute;
+  top: 10px; /* Ajuste para asegurar visibilidad */
+  right: 10px; /* Ajuste para asegurar visibilidad */
+  border-radius: 8px;
+  transition: 0.5s;
+}
+
+.perfil-detallado .boton-cerrar:hover {
+  background-color: var(--700);
+  color: white;
+  border-radius: 8px;
+}
+
+.perfil-detallado .info-personal {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.perfil-detallado .foto {
+  width: 25%;
+  height: 65%;
+  border: 3px solid var(--950);
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.perfil-detallado .datos {
+  width: 100%;
+  height: 15%;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+  color: rgb(236, 236, 236);
+}
+
+.descripcion-tecnologias .descripcion {
+  color: rgb(158, 158, 158);
+  width: 95%;
+  margin-left: 15px;
+  font-size: 15px;
+}
+
+.tecnologias {
+  width: 100%;
+  height: 120px;
+}
+
+.tecnologias h3 {
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  color: var(--900);
+  margin-top: 20px;
+  text-decoration-line: underline;
+}
+
+.tecnologias ul {
+  width: 100%;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.tecnologias ul li {
+  width: 80px;
+  height: 25px;
+  list-style: none;
+  color: var(--200);
+  font-size: 14px;
+  background-color: rgb(86, 86, 86);
+  border-radius: 5px;
+  text-align: center;
+}
+
+.enlaces {
+  width: 100%;
+  height: 130px;
+}
+
+.enlaces h3 {
+  width: 100%;
+  height: 25px;
+  text-align: center;
+  color: var(--800);
+  text-decoration-line: underline;
+}
+
+.enlaces .contratar {
+  width: 100%;
+  height: 105px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+}
+
+.contratar ul {
+  width: 120px;
+  height: 50px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20%;
+}
+
+.contratar ul li a svg {
+  width: 30px;
+  height: 30px;
+  color: var(--700);
+  transition: 0.5s;
+}
+
+.contratar ul li a svg:hover {
+  transition: 0.5s;
+  color: var(--900);
+}
+
+.contratar .btn-contrato {
+  width: 120px;
+  height: 50px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--800);
+  text-decoration: none;
+  border: none;
+  transition: 0.5s;
+}
+
+.contratar .btn-contrato:hover {
+  transition: 0.5s;
+  background-color: var(--900);
+}
+
+.fondo-oscuro {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
