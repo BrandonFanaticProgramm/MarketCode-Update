@@ -1,0 +1,56 @@
+:root{
+    --50: #fdf3ff;
+    --100: #fae2ff;
+    --200: #f5cbff;
+    --300: #eea2ff;
+    --400: #e367ff;
+    --500: #da2dff;
+    --600: #cf06ff;
+    --700: #bb00f8;
+    --800: #8e00b6;
+    --900: #8002a1;
+    --950: #5b007b;
+}
+
+
+
+.notificaciones-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.notificacion {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.notificacion p {
+    margin: 0;
+    padding: 5px 0;
+}
+
+.notificacion span {
+    color: #ffff;
+}
+
+.notificacion .servicio {
+    font-weight: bold;
+    color: #ffff;
+}
+
+.no-notificaciones {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+.cliente {
+    color: #333;
+}
+
+.fecha {
+    font-size: 0.9em;
+    color: #777;
+}

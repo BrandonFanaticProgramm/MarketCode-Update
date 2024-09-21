@@ -1,0 +1,52 @@
+:root {
+    --50: #fdf3ff;
+    --100: #fae2ff;
+    --200: #f5cbff;
+    --300: #eea2ff;
+    --400: #e367ff;
+    --500: #da2dff;
+    --600: #cf06ff;
+    --700: #bb00f8;
+    --800: #8e00b6;
+    --900: #8002a1;
+    --950: #5b007b;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.compromisos-lista {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: black;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.compromiso-item {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid var(--800);
+    border-radius: 8px;
+    background-color: black;
+}
+
+.compromiso-item h2 {
+    font-size: 22px;
+    margin: 0 0 10px;
+    color: white;
+}
+
+.compromiso-item p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: white;
+}
+
+.resaltado {
+    font-weight: bold;
+    color: var(--500);
+}

@@ -1,4 +1,3 @@
-
 <?php
 
 error_reporting(E_ALL);
@@ -7,9 +6,11 @@ ini_set('display_errors', 1);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK &&
+    if (
+        isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK &&
         isset($_POST['role']) && isset($_POST['country']) &&
-        isset($_POST['Link_github']) && isset($_POST['sobre-mi']) && isset($_POST['experiencia'])) {
+        isset($_POST['Link_github']) && isset($_POST['sobre-mi']) && isset($_POST['experiencia'])
+    ) {
 
         // Variables para los datos del formulario
         $rol = htmlspecialchars($_POST['role']);
@@ -42,8 +43,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (in_array($fileExtension, $allowedExts) && $fileSize <= $maxFileSize) {
                 // Mover el archivo a la ubicación permanente
                 if (move_uploaded_file($fileTmpPath, $newFilePath)) {
-                    echo "Archivo subido con éxito.";
-                    
+                    //echo "Archivo subido con éxito.";
+
                     // Preparar e insertar datos en la base de datos
                     $id_usuario = $_GET['id_usuario']; // Asegúrate de definir este valor adecuadamente
 
@@ -51,7 +52,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                  VALUES ('$id_usuario', '$newFileName', '$rol', '$disponibilidad','$experiencia','$pais', '$githubLink', '$sobreMi')";
 
                     if ($conexion->query($consulta)) {
-                        echo "Datos insertados con éxito.";
+                        //echo "Datos insertados con éxito.";
+                        header('location: Formulario-Lenguajes/Lenguajes.php?id_usuario='. $id_usuario);
                     } else {
                         echo "Error al insertar datos en la base de datos: " . $conexion->error;
                     }
@@ -85,24 +87,25 @@ $conexion->close(); // Cierra la conexión a la base de datos
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
     <section class="principal">
         <header class="barra-superior">
-            <h1>¡Estás a un paso más!</h1>
-            <p class="lead">¡Bienvenido a MarketCode, [Nombre del Programador]! Estamos emocionados de tenerte en nuestra comunidad. Aquí, tendrás la oportunidad de mostrar tus habilidades, conectar con proyectos desafiantes y llevar tu carrera al siguiente nivel. No dudes en explorar las oportunidades que te esperan, ¡y prepárate para convertir tus conocimientos en éxitos! Comienza tu camino con MarketCode.</p>
+            <h1 class="titulo">¡Estás a un paso más!</h1>
+            <p class="parrafo">¡Bienvenido a MarketCode Estamos emocionados de tenerte en nuestra comunidad. Aquí, tendrás la oportunidad de mostrar tus habilidades, conectar con proyectos desafiantes y llevar tu carrera al siguiente nivel. No dudes en explorar las oportunidades que te esperan, ¡y prepárate para convertir tus conocimientos en éxitos! Comienza tu camino con MarketCode.</p>
         </header>
 
         <form class="formulario-cliente" action="" method="post" enctype="multipart/form-data">
             <div class="foto_perfil">
                 <label for="profile-image">Foto de perfil:</label>
-                <input id="profile-image" type="file" name="file" required>
+                <input id="profile-image" type="file" name="file" required class="file">
             </div>
 
             <div class="especialidad">
                 <label for="role">Ingresa tu campo de especialidad:</label>
-                <select id="role" name="role" required>
+                <select id="role" name="role" required class="select-campo">
                     <option value="frontend">Frontend Developer</option>
                     <option value="backend">Backend Developer</option>
                     <option value="fullstack">Full Stack Developer</option>
@@ -130,7 +133,7 @@ $conexion->close(); // Cierra la conexión a la base de datos
 
             <div class="localidad">
                 <label for="country">Seleccione su país:</label>
-                <select id="country" name="country" required></select>
+                <select id="country" name="country" required class="select-campo"></select>
             </div>
 
             <div class="link-github">
@@ -145,10 +148,10 @@ $conexion->close(); // Cierra la conexión a la base de datos
 
             <div class="sobre-mi">
                 <label for="about-me">Descríbete tal y como eres:</label>
-                <textarea id="about-me" name="sobre-mi" required></textarea>
+                <input id="about-me" name="sobre-mi" required></input>
             </div>
 
-            <input class="btn-enviar" type="submit" value="Enviar">
+            <input class="btn-enviar" type="submit" value="Avanzar">
         </form>
     </section>
 

@@ -13,10 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $insertarUsuarios = "INSERT INTO Clientes (id_usuario, Direccion, Telefono) 
                                      VALUES ('$id_usuario', '$direccion', '$telefono')";
+                    
         
         if($conexion -> query($insertarUsuarios)) {
 
-            header('location: ./VistaCliente/Cliente.php');
+            $clienteId = $conexion -> insert_id;
+
+            header('location: ./VistaCliente/Cliente.php?id_cliente='. $clienteId);
             exit();
         }
 

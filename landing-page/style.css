@@ -262,16 +262,16 @@
     font-size: 22px;
 }
 
-.cartas{
-    width: 800px;
-    height: 400px;
-    margin-top: 70px;
-    margin-left: 700px;
+.cartas {
+    width: 100%; /* Ajuste del ancho para que sea responsivo */
+    max-width: 800px; /* Máximo ancho fijo */
+    margin: 70px auto; /* Centrando y añadiendo margen superior */
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(2,380px);
-    position: absolute;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Diseño fluido */
+    position: relative; /* Cambiado a relativo para ajuste más flexible */
 }
+
 
 .cartas article{
     margin-bottom: 10px;
@@ -286,25 +286,26 @@
     box-shadow: 0px 0px 10px 1px rgba(0,0,0,1);
 }
 
-.cartas article .foto{
+.cartas article .foto {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    margin-left: 20px;
-    background-image: url(./images/per.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.cartas article .info{
-    width: 235px;
+
+.cartas article .info {
+    width: 235px; /* Asegúrate de que este ancho es suficiente */
     height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
+    align-items: center; /* Centra todo el contenido horizontalmente */
+    justify-content: center;
+    text-align: center; /* Alineación del texto */
 }
+
 
 .cartas article .info .nombre{
     color: white;
@@ -312,22 +313,24 @@
     text-align: center;
 }
 
-.calificacion{
+.calificacion {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    gap: 8px;
+    justify-content: center; /* Centra horizontalmente */
+    gap: 8px; /* Espacio entre los elementos */
+    margin-top: 10px; /* Espacio superior */
 }
 
-.calificacion svg{
-    width: 16px;
-    height: 16px;
-    color: orange;
-}
-
-.calificacion p{
+.calificacion p {
     color: white;
+    font-size: 16px; /* Tamaño de fuente ajustado para mejor visibilidad */
+    margin: 0; /* Elimina márgenes para evitar desalineación */
+}
+
+.calificacion svg {
+    width: 20px; /* Tamaño ajustado de las estrellas */
+    height: 20px;
+    color: orange; /* Color de las estrellas */
 }
 
 .info .tecnologias{
@@ -364,7 +367,7 @@
     overflow: auto;
     position: fixed;
     border-radius: 12px;
-    background-color: rgb(30,30,30);
+    background-color: rgb(30, 30, 30);
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
 }
 

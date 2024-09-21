@@ -3,10 +3,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const perfilDetallado = document.getElementById('carta-perfil');
     const cerrarPerfil = document.getElementById('cerrar-perfil');
     const fondo = document.getElementById('fondo');
+    const contratar = document.querySelector('.btn-contrato');
+    let userId;
+
+
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+
+    const id_cliente = getQueryParam('id_cliente');
 
     // Función para cargar la información del perfil
-    function cargarPerfil(userId) {
-        fetch(`../js/obtenerPerfil.php?id_usuario=${userId}`)
+    function cargarPerfil(programadorId) {
+        fetch(`../js/obtenerPerfil.php?id_programador=${programadorId}`)
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
@@ -15,6 +26,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.querySelector('#carta-perfil .nombre').textContent = `${data.data.Nombre} ${data.data.Apellido}`;
                     document.querySelector('#carta-perfil .nacionalidad').textContent = `Pais: ${data.data.localidad}`;
                     document.querySelector('#carta-perfil .descripcion').textContent = data.data.sobre_mi;
+
+                    //Manejo de lenguajes
+                    document.querySelector('.tecnologias-programador').innerHTML = "";
+                    let lenguajes = data.data.lenguajes.split(',');
+                    lenguajes.forEach(lenguaje => {
+                        const lenguajeInterfaz = document.createElement('li');
+                        lenguajeInterfaz.textContent = lenguaje;
+                        document.querySelector('.tecnologias-programador').appendChild(lenguajeInterfaz);
+                    })
                 } else {
                     // Manejo de errores
                     console.error('Error al cargar el perfil:', data.message);
@@ -26,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (verPerfilButtons.length > 0 && perfilDetallado && cerrarPerfil) {
         verPerfilButtons.forEach(button => {
             button.addEventListener('click', function() {
-                const userId = button.getAttribute('data-id');
+                userId = button.getAttribute('data-id');
                 cargarPerfil(userId); // Cargar la información del perfil
                 perfilDetallado.style.display = 'block';
                 if (fondo) {
@@ -42,4 +62,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    contratar.addEventListener("click",() => {
+
+        contratar.setAttribute('href',`../../Programador/plan-pagos/Servicios.php?id_programador=${userId}&id_cliente=${id_cliente}`); // AGREGANDO ATRIBUTO DINAMICAMENTE AL BOTON PARA REDIRIGIR CON EL ID CORRECTO
+    });
 });

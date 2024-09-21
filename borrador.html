@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compromisos del Programador</title>
+    <style>
+        :root {
+            --50: #fdf3ff;
+            --100: #fae2ff;
+            --200: #f5cbff;
+            --300: #eea2ff;
+            --400: #e367ff;
+            --500: #da2dff;
+            --600: #cf06ff;
+            --700: #bb00f8;
+            --800: #8e00b6;
+            --900: #8002a1;
+            --950: #5b007b;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--50);
+            margin: 0;
+            padding: 20px;
+            color: var(--800);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--700);
+            margin-bottom: 20px;
+        }
+
+        .compromisos-lista {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--100);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .compromiso-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid var(--300);
+            border-radius: 8px;
+            background-color: var(--200);
+        }
+
+        .compromiso-item h2 {
+            font-size: 22px;
+            margin: 0 0 10px;
+            color: var(--700);
+        }
+
+        .compromiso-item p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: var(--800);
+        }
+
+        .resaltado {
+            font-weight: bold;
+            color: var(--500);
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Mis Compromisos</h1>
+
+    <div class="compromisos-lista">
+        <!-- Compromiso 1 -->
+        <div class="compromiso-item">
+            <h2>Desarrollo de Página Web</h2>
+            <p><span class="resaltado">Paquete:</span> Estándar</p>
+            <p><span class="resaltado">Descripción:</span> Crear una página web para una empresa.</p>
+            <p><span class="resaltado">Fecha de entrega:</span> 7 días restantes</p>
+            <p><span class="resaltado">Revisiones permitidas:</span> 3</p>
+        </div>
+
+        <!-- Compromiso 2 -->
+        <div class="compromiso-item">
+            <h2>Desarrollo de Aplicación Móvil</h2>
+            <p><span class="resaltado">Paquete:</span> Premium</p>
+            <p><span class="resaltado">Descripción:</span> Desarrollar una aplicación móvil para un e-commerce.</p>
+            <p><span class="resaltado">Fecha de entrega:</span> 14 días restantes</p>
+            <p><span class="resaltado">Revisiones permitidas:</span> 5</p>
+        </div>
+
+        <!-- Compromiso 3 -->
+        <div class="compromiso-item">
+            <h2>Diseño de Logo Corporativo</h2>
+            <p><span class="resaltado">Paquete:</span> Básico</p>
+            <p><span class="resaltado">Descripción:</span> Crear un logo moderno para una startup.</p>
+            <p><span class="resaltado">Fecha de entrega:</span> 5 días restantes</p>
+            <p><span class="resaltado">Revisiones permitidas:</span> 2</p>
+        </div>
+    </div>
+
+</body>
+</html>

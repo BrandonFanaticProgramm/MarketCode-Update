@@ -1,0 +1,42 @@
+body {
+
+    height: 100vh;
+}
+
+.saldo-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.saldo-total {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #740bcf;
+    margin: 15px 0;
+}
+
+.detalle-saldo {
+    font-size: 1.2em;
+    color: #740bcf;
+    margin-bottom: 20px;
+}
+
+.proyectos-completados {
+    font-size: 1em;
+    color: #555;
+}
+
+.proyectos-completados strong {
+    color: #333;
+    font-weight: bold;
+}

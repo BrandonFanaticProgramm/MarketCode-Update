@@ -1,13 +1,16 @@
 <?php
-
+session_start();
 error_reporting(E_ALL);
 include('../../Conexion/conexion.php');
 ini_set('display_errors', 1);
 
-$consulta = "SELECT Nombre, Apellido, foto_perfil,localidad, sobre_mi, Usuarios.id_usuario
-FROM Usuarios
-INNER JOIN Programadores
-ON Usuarios.id_usuario = Programadores.id_usuario";
+$consulta = "SELECT p.id_programador, u.Nombre, u.Apellido, p.foto_perfil, p.localidad, p.sobre_mi, u.id_usuario, GROUP_CONCAT(l.nombre SEPARATOR ', ') as lenguajes
+FROM Usuarios u
+INNER JOIN Programadores p ON u.id_usuario = p.id_usuario
+LEFT JOIN Programador_Lenguaje pl ON p.id_programador = pl.id_programador
+LEFT JOIN Lenguajes_Programadores l ON pl.id_lenguaje = l.id_lenguaje
+GROUP BY p.id_programador";
+
 $resultado = $conexion->query($consulta);
 $datos = [];
 
@@ -19,8 +22,6 @@ if ($resultado->num_rows > 0) {
 } else {
     echo "Sin programadores.";
     exit; // Detener la ejecución si no hay datos
-
-    //TERMINAR LAS TARJETAS
 }
 
 ?>
@@ -33,7 +34,7 @@ if ($resultado->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MarketCode</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ClienteVista.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,18 +43,23 @@ if ($resultado->num_rows > 0) {
 </head>
 
 <body>
-    <div class="contenedor">
-
+    <section class="contenedor">
         <div class="header-title">
+            <div class="btn-volver">
+                <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
+                        <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z" />
+                    </svg>
+                </a>
+            </div>
             <h1 class="h1">Contrata a tu programador</h1>
             <p class="lead">
                 <span><?php echo count($datos); ?></span> Programadores
             </p>
         </div>
-
         <div class="filter-search">
             <div class="habilidades">
-                <select name="#" id="#">
+                <select name="#" id="#" class="select-habilidades">
                     <option value="#">Python</option>
                     <option value="#">SQL</option>
                     <option value="#">Javascript</option>
@@ -61,7 +67,7 @@ if ($resultado->num_rows > 0) {
             </div>
 
             <div class="experiencia">
-                <select name="#" id="">
+                <select name="#" id="" class="select-experiencia">
                     <option value="#">Menos de 6 meses</option>
                     <option value="#">Sin experiencia</option>
                     <option value="#">Mas de 1 año</option>
@@ -69,7 +75,7 @@ if ($resultado->num_rows > 0) {
             </div>
 
             <div class="localidad">
-                <select name="#" id="">
+                <select name="#" id="" class="select-localidad">
                     <option value="#">Colombia</option>
                     <option value="#">Peru</option>
                     <option value="#">Argentina</option>
@@ -82,60 +88,57 @@ if ($resultado->num_rows > 0) {
             if (!empty($datos)) {
                 foreach ($datos as $programador) {
                     echo '
-                    <article class="carta">
-                        <!-- Foto del programador -->
-                         <div class="foto" style="background-image: url(\'../../uploads/' . htmlspecialchars($programador['foto_perfil']) . '\');" alt="Foto de perfil"></div>
-                        <div class="info">
-                            <h5 class="nombre">' . htmlspecialchars($programador['Nombre']) . ' ' . htmlspecialchars($programador['Apellido']) . '</h5>
-                            <div class="calificacion">
-                                <p class="estrellas">5.0</p>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                </svg>
-                            </div>
-                            <button id="boton-perfil" class="ver-perfil" data-id="' . htmlspecialchars($programador['id_usuario']) . '">Ver Perfil</button>
-                        </div>
-                    </article>';
+                            <article class="carta">
+                <div class="foto" style="background-image: url(\'../../uploads/' . htmlspecialchars($programador['foto_perfil']) . '\');" alt="Foto de perfil"></div>
+                <div class="info">
+                    <h5 class="nombre">' . htmlspecialchars($programador['Nombre']) . ' ' . htmlspecialchars($programador['Apellido']) . '</h5>
+                    <div class="calificacion">
+                        <p class="estrellas">5.0</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                        </svg>
+                    </div>
+                    <button id="boton-perfil" class="ver-perfil" data-id="' . $programador['id_programador'] . '">Ver Perfil</button>
+                </div>
+            </article>';
                 }
             }
             ?>
         </div>
 
         <div id="carta-perfil" class="perfil-detallado">
-
             <div class="info-personal">
                 <button id="cerrar-perfil" class="boton-cerrar"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                        <path="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
                     </svg>
                 </button>
                 <div class="foto"></div>
 
                 <div class="datos">
-                    <p class="nombre"><?php echo $programador['Nombre'] . ' ' . $programador['Apellido']; ?></p>
-                    <p class="nacionalidad">Pais: <?php echo $programador['localidad'] ?></p>
+                    <p class="nombre"></p>
+                    <p class="nacionalidad"></p>
                 </div>
             </div>
             <hr>
 
             <div class="descripcion-tecnologias">
-                <div class="descripcion"><?php echo $programador['sobre_mi'] ?></div>
-
+                <div class="descripcion"></div>
                 <div class="tecnologias">
                     <hr>
-                    <h3>Tecnologias</h3>
-                    <ul>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>JavaScript</li>
-                        <li>PHP</li>
-                        <li>MySQL</li>
+                    <h3>Tecnologías</h3>
+                    <ul class="tecnologias-programador">
+
                     </ul>
                 </div>
             </div>
 
+            <div class="id_programador">
+
+            </div>
+
             <div class="enlaces">
-                <h3>Contactame</h3>
+                <h3>Contáctame</h3>
                 <div class="contratar">
                     <ul>
                         <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
@@ -148,11 +151,11 @@ if ($resultado->num_rows > 0) {
                                 </svg></a>
                         </li>
                     </ul>
-                    <a class="btn-contrato" href="../plan-pagos/pagos.html">Contratar</a>
+                    <a class="btn-contrato"">Contratar</a>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <script src="../js/boton.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

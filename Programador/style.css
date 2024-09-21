@@ -1,0 +1,186 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+:root {
+    --50: #fdf3ff;
+    --100: #fae2ff;
+    --200: #f5cbff;
+    --300: #eea2ff;
+    --400: #e367ff;
+    --500: #da2dff;
+    --600: #cf06ff;
+    --700: #bb00f8;
+    --800: #8e00b6;
+    --900: #8002a1;
+    --950: #5b007b;
+}
+
+
+
+.principal {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    background-image: url(img/layered-waves-haikei.svg);
+    flex-direction: row;
+    align-items: center;
+    gap: 150px;
+}
+
+.barra-superior {
+    height: 600px;
+    width: 600px;
+    color: white;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 200px;
+    margin-left: 30px;
+}
+
+.file-select {
+    position: relative;
+    display: inline-block;
+}
+
+.file-select::before {
+    background-color: var(--800);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    content: 'Seleccionar';
+    /* testo por defecto */
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.file-select input[type="file"] {
+    opacity: 0;
+    width: 200px;
+    height: 32px;
+    display: inline-block;
+}
+
+#src-file1::before {
+    content: 'Seleccionar Archivo 1';
+}
+
+.parrafo {
+    color: white;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.titulo {
+    color: white;
+    font-size: 40px;
+}
+
+.formulario-cliente {
+    height: 500px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    color: white;
+    background-color: #1E1E1E;
+    border-radius: 20px;
+    box-shadow: 0px 0px 8px 10px rgb(0, 0, 0, 0.4);
+}
+
+.select-campo {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.select-campo {
+    display: inline-block;
+    width: 200px;
+    cursor: pointer;
+    padding: 7px 10px;
+    height: 42px;
+    outline: 0;
+    border: 0;
+    background-color: #1E1E1E;
+    color: white;
+    font-size: 1em;
+    border: 2px solid var(--800);
+    border-radius: 12px;
+    position: relative;
+    transition: all 0.25s ease;
+    margin-top: 5px;
+
+}
+
+.foto_perfi {
+    height: 300px;
+    width: 200px;
+    display: flex;
+    border: 1px solid red;
+}
+
+.especialidad {
+    height: 60px;
+    width: 300px;
+
+}
+
+.localidad {
+    height: 60px;
+    width: 310px;
+}
+
+.link-github {
+    height: 60px;
+    width: 300px;
+    border-bottom: solid #5b007b 3px;
+}
+
+.experiencia {
+    height: 60px;
+    width: 300px;
+    border-bottom: solid #5b007b 3px;
+}
+
+.sobre-mi {
+    height: 60px;
+    width: 300px;
+    border-bottom: solid #5b007b 3px;
+}
+
+.btn-enviar {
+    height: 40px;
+    width: 200px;
+    background-color: var(--800);
+    color: white;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.btn-enviar:hover {
+    transition: 0.5s;
+    background-color: var(--950);
+}
+
+input {
+    background-color: #1E1E1E;
+    border: none;
+    width: 100%;
+    color: white;
+
+}

@@ -4,21 +4,36 @@ error_reporting(E_ALL);
 include('../../Conexion/conexion.php');
 ini_set('display_errors', 1);
 
-// Obtener el ID del usuario desde la URL
-$id_usuario = isset($_GET['id_usuario']) ? intval($_GET['id_usuario']) : 0;
+// Obtener el ID del programador desde la URL
+$id_programador = isset($_GET['id_programador']) ? intval($_GET['id_programador']) : 0;
 
 $response = [];
 
-if ($id_usuario > 0) {
+if ($id_programador > 0) {
     // Consulta SQL para obtener los detalles del perfil del programador específico
-    $consulta = "SELECT Nombre, Apellido, foto_perfil, localidad, sobre_mi 
-                 FROM Usuarios 
-                 INNER JOIN Programadores 
-                 ON Usuarios.id_usuario = Programadores.id_usuario 
-                 WHERE Usuarios.id_usuario = $id_usuario";
-                 
+    $consulta = "SELECT 
+    p.id_programador, 
+    u.Nombre, 
+    u.Apellido, 
+    p.foto_perfil, 
+    p.localidad, 
+    p.sobre_mi, 
+    GROUP_CONCAT(l.nombre SEPARATOR ', ') AS lenguajes
+FROM 
+    Programadores p
+INNER JOIN 
+    Usuarios u ON u.id_usuario = p.id_usuario
+LEFT JOIN 
+    Programador_Lenguaje pl ON p.id_programador = pl.id_programador
+LEFT JOIN 
+    Lenguajes_Programadores l ON pl.id_lenguaje = l.id_lenguaje
+WHERE 
+    p.id_programador = $id_programador
+GROUP BY 
+    p.id_programador";
+
     $resultado = $conexion->query($consulta);
-    
+
     if ($resultado) {
         if ($resultado->num_rows > 0) {
             // Obtener los detalles del perfil
@@ -45,10 +60,9 @@ if ($id_usuario > 0) {
     // ID no válido
     $response = [
         'success' => false,
-        'message' => 'Usuario no encontrado'
+        'message' => 'ID de programador no válido'
     ];
 }
 
 // Enviar la respuesta en formato JSON
 echo json_encode($response);
-?>

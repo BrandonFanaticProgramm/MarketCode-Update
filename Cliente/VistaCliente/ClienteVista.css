@@ -16,17 +16,17 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins";
+  font-family: 'Poppins';
 }
 
 .contenedor {
-  height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 30px;
+  background-color: #171027;
 }
 
 .header-title {
@@ -34,7 +34,32 @@
   flex-direction: column;
   text-align: center;
   font-weight: bold;
-  margin-top: 300px;
+  margin-top: 90px;
+  color: white;
+  width: 100%;
+}
+
+.btn-volver{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15px;
+}
+
+.btn-volver a{
+  width: 100%;
+  height: 100%;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-volver a svg{
+  width: 90%;
+  height: 90%;
+  color: white;
 }
 
 .filter-search {
@@ -43,6 +68,77 @@
   align-items: center;
   gap: 40px;
 }
+
+.select-habilidades{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.select-experiencia{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.select-localidad{
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.select-habilidades{
+  display: inline-block;
+	width: 100%;
+	cursor: pointer;
+  padding: 7px 10px;
+  height: 42px;
+  outline: 0; 
+  border: 0;
+	background: #1E1E1E;
+	color: white;
+	font-size: 1em;
+	border:2px solid var(--800);
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.25s ease;
+  text-align: center;
+}
+
+.select-localidad{
+  display: inline-block;
+	width: 100%;
+	cursor: pointer;
+  padding: 7px 10px;
+  height: 42px;
+  outline: 0; 
+  border: 0;
+	background: #1E1E1E;
+	color: white;
+	font-size: 1em;
+	border:2px solid var(--800);
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.25s ease;
+  text-align: center;
+}
+
+.select-experiencia{
+  display: inline-block;
+	width: 100%;
+	cursor: pointer;
+  padding: 7px 10px;
+  height: 42px;
+  outline: 0; 
+  border: 0;
+	background: #1E1E1E;
+	color: white;
+	font-size: 1em;
+	border:2px solid var(--800);
+  border-radius: 12px;
+  position: relative;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+
 
 .main-programadores {
   width: 100%;
@@ -53,6 +149,10 @@
   flex-wrap: wrap;
   padding: 20px;
   min-height: 100vh;
+  background-image: url(../images/fondo1.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .carta {
@@ -359,4 +459,3 @@
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1000;
 }
-
