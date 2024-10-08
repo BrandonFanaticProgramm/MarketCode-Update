@@ -1,0 +1,61 @@
+
+
+:root{
+    --50: #fdf3ff;
+    --100: #fae2ff;
+    --200: #f5cbff;
+    --300: #eea2ff;
+    --400: #e367ff;
+    --500: #da2dff;
+    --600: #cf06ff;
+    --700: #bb00f8;
+    --800: #8e00b6;
+    --900: #8002a1;
+    --950: #5b007b;
+}
+
+
+
+body {
+    font-family: 'Poppins';
+    background-color: rgb(0, 0, 0);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tablero-cliente {
+    width: 100%;
+    max-width: 1000px;
+    margin: 50px auto;
+    background-color: #101010;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1, h2 {
+    color: #ffff;
+    text-transform: uppercase;
+}
+
+p {
+    margin: 10px 0;
+    line-height: 1.5;
+    color: white;
+}
+
+strong {
+    color: var(--900);
+    font-weight: bold;
+}
+
+.link {
+    color: white;
+}

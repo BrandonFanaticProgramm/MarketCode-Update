@@ -7,7 +7,6 @@ ini_set('display_errors', 1);
 
 
 $id_programador = intval($_GET['id_programador']);
-$id_usuario = intval($_GET['id_usuario']);
 
 $Nombre_programador = "";
 $Apellido_Programador = "";
@@ -37,7 +36,8 @@ if($resultadoConsulta) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Programador MarketCode</title>
+    <link rel="shortcut icon" href="../../../landing-page/images/logo.png" type="image/x-icon">
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="./assets/scss/styles.css">
 </head>
@@ -56,19 +56,19 @@ if($resultadoConsulta) {
                 </div>
 
                 <ul class="nav__list">
-                    <a href="../VistaProgramador.php" class="nav__link active">
+                    <a href="../VistaProgramador.php?id_programador=<?php echo $id_programador; ?>" class="nav__link active">
                         <i class='bx bx-grid-alt nav__icon'></i>
                         <span class="nav__text">Inicio</span>
                     </a>
-                    <a href="/MarketCode/Programador/Vista/Perfil/Perfil.php" class="nav__link">
+                    <a href="/MarketCode/Programador/Vista/Perfil/Perfil.php?id_programador=<?php echo $id_programador; ?>" class="nav__link">
                         <i class='bx bx-user nav__icon'></i>
                         <span class="nav__text">Perfil</span>
                     </a>
-                    <a href="/MarketCode/Programador/Vista/Notificaciones/Notificaciones.php" class="nav__link ">
+                    <a href="/MarketCode/Programador/Vista/Notificaciones/Notificaciones.php?id_programador=<?php echo $id_programador; ?>" class="nav__link ">
                         <i class='bx bx-bell nav__icon'></i>
                         <span class="nav__text">Notificaciones</span>
                     </a>
-                    <a href="/MarketCode/Programador/Vista/Proyectos/Proyectos.php" class="nav__link">
+                    <a href="/MarketCode/Programador/Vista/Proyectos/Proyectos.php?id_programador=<?php echo $id_programador; ?>" class="nav__link">
                         <i class='bx bx-briefcase nav__icon'></i>
                         <span class="nav__text">Proyectos</span>
                     </a>
@@ -83,7 +83,7 @@ if($resultadoConsulta) {
                     </a>
                 </ul>
             </div>
-            <a href="#" class="nav__link">
+            <a href="./logout.php" class="nav__link">
                 <i class='bx bx-log-out-circle nav__icon'></i>
                 <span class="nav__text">Cerrar Sesion</span>
             </a>

@@ -74,6 +74,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="../../landing-page/images/logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet">
     <title>Selecciona tus Habilidades</title>
 </head>
 <body>
@@ -83,6 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <form action="" method="POST">
+    <div class="checkbox-group">
         <?php 
             if ($resultado) {
                 // Generar un checkbox por cada lenguaje en la base de datos
@@ -99,7 +104,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         ?>
         <br>
-        <button type="submit">Enviar Habilidades</button>
-    </form>
+    </div>
+    <button type="submit">Enviar Habilidades</button>
+</form>
 </body>
 </html>

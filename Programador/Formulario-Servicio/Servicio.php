@@ -1,17 +1,17 @@
 <?php
 
 error_reporting(E_ALL);
-include('../../Conexion/conexion.php'); // Asegúrate de que este archivo defina la conexión $conn
+include('../../Conexion/conexion.php'); // CONEXION DE LA BASE DE DATOS
 ini_set('display_errors', 1);
 
 if ($_SERVER["REQUEST_METHOD"] === 'POST') {
 
-    $id_programador = $_GET['id_programador'];
+    $id_programador = $_GET['id_programador']; //ID DEL PROGRAMADOR
 
-    $planes = ['Basico', 'Estandar', 'Premium'];
+    $planes = ['Basico', 'Estandar', 'Premium']; // PLANES DEL PROGRAMADOR
 
     foreach ($planes as $plan) {
-
+        //CICLO FOREACH PARA ITERAR CADA PLAN Y CONCATENARLO
         $precio = $_POST["precio_" . strtolower($plan)];
         $descripcion = $_POST["descripcion_" . strtolower($plan)];
         $numero_entrega = $_POST["numero_entrega_" . strtolower($plan)];
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
 
 
         if (empty($precio) || empty($descripcion) || empty($numero_entrega) || empty($numero_revisiones) || empty($detalle_1) || empty($detalle_2) || empty($detalle_3) || empty($titulo_servicio)) {
-
+            //COMPROBAR SI ALGUNO DE LOS DETALLES Y/O PLANES ESTAN VACIOS
             echo 'Todos los campos de ' . $plan . ' deben ser rellenados';
             exit;
         }
@@ -33,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
         $detalles = array($detalle_1, $detalle_2, $detalle_3, $detalle_4, $detalle_5);
 
         if (count(array_filter($detalles)) < 3) {
+            //Esta función toma el array $detalles y elimina (filtra) los valores vacíos o falsos
 
             echo 'El plan ' . $plan . ' debe tener al menos 3 detalles.';
             exit;
@@ -57,7 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
 
             if ($conexion->query($insertarServicios)) {
 
-                echo 'Se insertaron los servicios';
+                header('location: ../Vista/VistaProgramador.php?id_programador=' . $id_programador);
+
             } else {
 
                 echo 'Error en la insercion de datos';
@@ -66,11 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
     }
 }
 ?>
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>

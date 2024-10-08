@@ -47,10 +47,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         if (move_uploaded_file($fileTmpPath, $newFilePath)) {
                             // Insertar en la base de datos
                             $consulta = "INSERT INTO Proyectos (id_programador, img_proyecto, nombre_proyecto, descripcion_proyecto, link_proyecto) 
-                                         VALUES ('$id_programador', '$newFileName', '$titulo_proyecto', '$descripcion_proyecto', '$link_proyecto')";
+                                        VALUES ('$id_programador', '$newFileName', '$titulo_proyecto', '$descripcion_proyecto', '$link_proyecto')";
 
                             if ($conexion->query($consulta)) {
-                                echo "Proyecto y archivo subidos con éxito.";
+                                echo '<script>alert("Proyecto y archivo subidos con éxito.")</script>';
                             } else {
                                 echo "Error al insertar datos en la base de datos: " . $conexion->error;
                             }
@@ -88,7 +88,10 @@ $conexion->close(); // Cierra la conexión a la base de datos
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Proyecto</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../../landing-page/images/logo.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Agregar Proyectos</title>
 </head>
 
 <body>
@@ -109,7 +112,7 @@ $conexion->close(); // Cierra la conexión a la base de datos
 
         <input type="submit" name="Accion" value="Agregar Proyecto">
         <input type="submit" name="Accion" value="Avanzar">
-        
+
     </form>
 </body>
 

@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 include('../../Conexion/conexion.php');
 ini_set('display_errors', 1);
 
-$consulta = "SELECT p.id_programador, u.Nombre, u.Apellido, p.foto_perfil, p.localidad, p.sobre_mi, u.id_usuario, GROUP_CONCAT(l.nombre SEPARATOR ', ') as lenguajes
+$consulta = "SELECT p.especialidad,p.id_programador, u.Nombre, u.Apellido, p.foto_perfil, p.localidad, p.sobre_mi, u.id_usuario, GROUP_CONCAT(l.nombre SEPARATOR ', ') as lenguajes
 FROM Usuarios u
 INNER JOIN Programadores p ON u.id_usuario = p.id_usuario
 LEFT JOIN Programador_Lenguaje pl ON p.id_programador = pl.id_programador
@@ -36,6 +36,7 @@ if ($resultado->num_rows > 0) {
     <title>MarketCode</title>
     <link rel="stylesheet" href="ClienteVista.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="shortcut icon" href="../../landing-page/images/logo.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -118,6 +119,7 @@ if ($resultado->num_rows > 0) {
                 <div class="datos">
                     <p class="nombre"></p>
                     <p class="nacionalidad"></p>
+                    <p class="especialidad"></p>
                 </div>
             </div>
             <hr>

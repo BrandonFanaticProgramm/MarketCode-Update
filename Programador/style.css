@@ -26,6 +26,9 @@
     width: 100%;
     display: flex;
     background-image: url(img/layered-waves-haikei.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     flex-direction: row;
     align-items: center;
     gap: 150px;
@@ -78,8 +81,8 @@
 
 .parrafo {
     color: white;
-    font-size: 16px;
-    line-height: 1.7;
+    font-size: 18px;
+    line-height: 1.8;
 }
 
 .titulo {
@@ -88,7 +91,7 @@
 }
 
 .formulario-cliente {
-    height: 500px;
+    height:540px;
     width: 500px;
     display: flex;
     align-items: center;
@@ -123,13 +126,6 @@
     transition: all 0.25s ease;
     margin-top: 5px;
 
-}
-
-.foto_perfi {
-    height: 300px;
-    width: 200px;
-    display: flex;
-    border: 1px solid red;
 }
 
 .especialidad {
@@ -183,4 +179,12 @@ input {
     width: 100%;
     color: white;
 
+}
+
+.foto_perfil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
 }

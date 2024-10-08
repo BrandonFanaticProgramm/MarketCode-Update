@@ -42,7 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Ejecutar consulta
     if ($conexion->query($ConsultaPagos)) {
-        echo '<h1>Pago efectuado correctamente</h1>';
+        echo '<script>alert("Pago realizado correctamente")</script>';
+        header('location: ../Cliente/Tablero/Tablero.php?id_cliente=' . $id_cliente . '&id_contratacion=' . $id_contratacion);
     } else {
         echo 'Error en el pago: ' . $conexion->error;
     }

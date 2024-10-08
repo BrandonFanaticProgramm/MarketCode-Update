@@ -1,13 +1,15 @@
 <?php
 
 error_reporting(E_ALL);
-include('../Conexion/conexion.php'); // Asegúrate de que este archivo defina la conexión $conn
+include('../Conexion/conexion.php'); // INCLUYE LA CONEXION DE LA BASE DE DATOS
 ini_set('display_errors', 1);
 
+// Verificar si la solicitud se realizó mediante el método POST (es decir, el formulario fue enviado)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (
-        isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK &&
+        // Verificar si los campos requeridos del formulario y el archivo subido están disponibles
+        isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK && // foto de perfil
         isset($_POST['role']) && isset($_POST['country']) &&
         isset($_POST['Link_github']) && isset($_POST['sobre-mi']) && isset($_POST['experiencia'])
     ) {
@@ -43,13 +45,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (in_array($fileExtension, $allowedExts) && $fileSize <= $maxFileSize) {
                 // Mover el archivo a la ubicación permanente
                 if (move_uploaded_file($fileTmpPath, $newFilePath)) {
-                    //echo "Archivo subido con éxito.";
+                    // Archivo subido con éxito;
 
                     // Preparar e insertar datos en la base de datos
-                    $id_usuario = $_GET['id_usuario']; // Asegúrate de definir este valor adecuadamente
+                    $id_usuario = $_GET['id_usuario'];
 
                     $consulta = "INSERT INTO Programadores (id_usuario, foto_perfil, especialidad, disponibilidad,experiencia ,localidad, link_github, sobre_mi) 
-                                 VALUES ('$id_usuario', '$newFileName', '$rol', '$disponibilidad','$experiencia','$pais', '$githubLink', '$sobreMi')";
+                                VALUES ('$id_usuario', '$newFileName', '$rol', '$disponibilidad','$experiencia','$pais', '$githubLink', '$sobreMi')";
 
                     if ($conexion->query($consulta)) {
                         //echo "Datos insertados con éxito.";
@@ -85,6 +87,7 @@ $conexion->close(); // Cierra la conexión a la base de datos
     <title>Registro Programador</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="shortcut icon" href="../../../landing-page/images/logo.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
@@ -106,28 +109,28 @@ $conexion->close(); // Cierra la conexión a la base de datos
             <div class="especialidad">
                 <label for="role">Ingresa tu campo de especialidad:</label>
                 <select id="role" name="role" required class="select-campo">
-                    <option value="frontend">Frontend Developer</option>
-                    <option value="backend">Backend Developer</option>
-                    <option value="fullstack">Full Stack Developer</option>
-                    <option value="devops">DevOps Engineer</option>
-                    <option value="mobile">Mobile Developer</option>
-                    <option value="dba">Database Administrator</option>
-                    <option value="security">Security Engineer</option>
-                    <option value="datascientist">Data Scientist</option>
-                    <option value="qa">Quality Assurance (QA)</option>
-                    <option value="uxui">UX/UI Designer</option>
-                    <option value="cloud">Cloud Engineer</option>
-                    <option value="mlai">Machine Learning/AI Engineer</option>
-                    <option value="softwarearchitect">Software Architect</option>
-                    <option value="productmanager">Product Manager</option>
-                    <option value="sysadmin">System Administrator</option>
-                    <option value="sre">Site Reliability Engineer (SRE)</option>
-                    <option value="game">Game Developer</option>
-                    <option value="embedded">Embedded Systems Developer</option>
-                    <option value="network">Network Engineer</option>
-                    <option value="bi">Business Intelligence (BI) Developer</option>
-                    <option value="blockchain">Blockchain Developer</option>
-                    <option value="iot">IoT Developer</option>
+                    <option value="Frontend Developer">Frontend Developer</option>
+                    <option value="Backend Developer">Backend Developer</option>
+                    <option value="Full Stack Developer">Full Stack Developer</option>
+                    <option value="DevOps Engineer">DevOps Engineer</option>
+                    <option value="Mobile Developer">Mobile Developer</option>
+                    <option value="Database Administrator">Database Administrator</option>
+                    <option value="Security Engineer">Security Engineer</option>
+                    <option value="Data Scientist">Data Scientist</option>
+                    <option value="Quality Assurance (QA)</">Quality Assurance (QA)</option>
+                    <option value="UX/UI Designer">UX/UI Designer</option>
+                    <option value="Cloud Engineer">Cloud Engineer</option>
+                    <option value="Machine Learning/AI Engineer">Machine Learning/AI Engineer</option>
+                    <option value="Software Architect">Software Architect</option>
+                    <option value="Product Manager">Product Manager</option>
+                    <option value="System Administrator">System Administrator</option>
+                    <option value="Site Reliability Engineer (SRE)">Site Reliability Engineer (SRE)</option>
+                    <option value="Game Developer">Game Developer</option>
+                    <option value="Embedded Systems Developer">Embedded Systems Developer</option>
+                    <option value="Network Engineer">Network Engineer</option>
+                    <option value="Business Intelligence (BI) Developer">Business Intelligence (BI) Developer</option>
+                    <option value="Blockchain Developer">Blockchain Developer</option>
+                    <option value="IoT Developer">IoT Developer</option>
                 </select>
             </div>
 
@@ -156,7 +159,7 @@ $conexion->close(); // Cierra la conexión a la base de datos
     </section>
 
     <script>
-        // Cargar los países en el select
+        // Cargar los países en el select desde una api externa
         fetch('https://restcountries.com/v3.1/all')
             .then(response => response.json())
             .then(data => {

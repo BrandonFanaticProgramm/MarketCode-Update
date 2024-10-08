@@ -1,3 +1,48 @@
+<?php
+session_start();
+error_reporting(E_ALL);
+include('../../../Conexion/conexion.php');
+ini_set('display_errors', 1);
+
+$id_programador = intval($_GET['id_programador']);
+
+$consultaProgramador = "
+    SELECT 
+        Usuarios.Nombre,
+        Usuarios.Apellido,
+        Programadores.sobre_mi,
+        Programadores.disponibilidad,
+        Programadores.experiencia,
+        Programadores.localidad,
+        Programadores.link_github,
+        Programadores.foto_perfil,
+        GROUP_CONCAT(Lenguajes_Programadores.nombre SEPARATOR ', ') AS lenguajes
+    FROM 
+        Usuarios
+    JOIN 
+        Programadores ON Programadores.id_usuario = Usuarios.id_usuario
+    LEFT JOIN 
+        Programador_Lenguaje ON Programador_Lenguaje.id_programador = Programadores.id_programador
+    LEFT JOIN 
+        Lenguajes_Programadores ON Lenguajes_Programadores.id_lenguaje = Programador_Lenguaje.id_lenguaje
+    WHERE 
+        Programadores.id_programador = $id_programador
+    GROUP BY 
+        Usuarios.id_usuario, Programadores.id_programador";
+
+$resultado = $conexion->query($consultaProgramador);
+$programador = $resultado->fetch_assoc();
+
+if (!$programador) {
+    echo "Programador no encontrado.";
+    exit;
+}
+
+?>
+
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -25,34 +70,34 @@
                 </div>
 
                 <ul class="nav__list">
-                    <a href="../VistaProgramador.php" class="nav__link">
+                    <a href="../VistaProgramador.php?id_programador=<?php echo $id_programador; ?>" class="nav__link">
                         <i class='bx bx-grid-alt nav__icon'></i>
                         <span class="nav__text">Inicio</span>
                     </a>
-                    <a href="/MarketCode/Programador/Vista/Perfil/Perfil.php" class="nav__link active">
+                    <a href="/MarketCode/Programador/Vista/Perfil/Perfil.php?id_programador=<?php echo $id_programador; ?>" class="nav__link active">
                         <i class='bx bx-user nav__icon'></i>
                         <span class="nav__text">Perfil</span>
                     </a>
-                    <a href="/MarketCode/Programador/Vista/Notificaciones/Notificaciones.php" class="nav__link ">
+                    <a href="/MarketCode/Programador/Vista/Notificaciones/Notificaciones.php?id_programador=<?php echo $id_programador; ?>" class="nav__link ">
                         <i class='bx bx-bell nav__icon'></i>
                         <span class="nav__text">Notificaciones</span>
                     </a>
-                    <a href="/MarketCode/Programador/Vista/Proyectos/Proyectos.php" class="nav__link">
+                    <a href="/MarketCode/Programador/Vista/Proyectos/Proyectos.php?id_programador=<?php echo $id_programador; ?>" class="nav__link">
                         <i class='bx bx-briefcase nav__icon'></i>
                         <span class="nav__text">Proyectos</span>
                     </a>
-                    <a href="/MarketCode/Programador/Vista/Cartera/Cartera.php" class="nav__link">
+                    <a href="/MarketCode/Programador/Vista/Cartera/Cartera.php?id_programador=<?php echo $id_programador; ?>" class="nav__link">
                         <i class='bx bx-wallet nav__icon'></i>
                         <span class="nav__text">Cartera</span>
                     </a>
 
-                    <a href="/MarketCode/Programador/Vista/Cartera/Cartera.php" class="nav__link">
+                    <a href="/MarketCode/Programador/Vista/Cartera/Cartera.php?id_programador=<?php echo $id_programador; ?>" class="nav__link">
                         <i class='bx bx-task nav__icon'></i>
                         <span class="nav__text">Compromisos</span>
                     </a>
                 </ul>
             </div>
-            <a href="#" class="nav__link">
+            <a href="../logout.php"" class="nav__link">
                 <i class='bx bx-log-out-circle nav__icon'></i>
                 <span class="nav__text">Cerrar Sesion</span>
             </a>
@@ -60,24 +105,37 @@
     </div>
 
     <div class="container">
-        <div class="img-programador"></div>
+        <div class="img-programador" style="background-image: url('../../../uploads/<?php echo $programador['foto_perfil']; ?>');"></div>
+
+
 
         <div class="container-name">
-            <h1>Brandon Alexis Quintero</h1>
-            <p class="sobre-mi"><span class="resaltado">Sobre mi: </span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum quia perferendis et, incidunt nam accusamus magni corporis explicabo non neque vitae natus quae beatae error ut ducimus voluptatum, ratione nobis.</p>
-            <p class="disponibilidad"><span class="resaltado">Disponibilidad: </span><span>Disponible</span></p>
-            <p class="mi-experiencia"><span class="resaltado">Experiencia:</span> 10 Años</p>
-            <p class="pais"><span class="resaltado">PAIS: </span>CO</p>
-            <P class="mi-github"><span class="resaltado">GITHUB: </span> <a href="#">github/brandon</a> <br>
+            <h1><?php echo $programador['Nombre'] . ' ' . $programador['Apellido'] ?></h1>
+            <p class="sobre-mi"><span class="resaltado">Sobre mi: </span><?php echo $programador['sobre_mi'] ?></p>
+            <p class="disponibilidad"><span class="resaltado">Disponibilidad: </span><span><?php if($programador['disponibilidad']) {
+                echo 'Disponible';
+            } else {
+                echo 'No Disponible';
+            } ?></span></p>
+            <p class="mi-experiencia"><span class="resaltado">Experiencia:</span> <?php echo $programador['experiencia'] ?> Años</p>
+            <p class="pais"><span class="resaltado">PAIS: </span><?php echo $programador['localidad'] ?></p>
+            <P class="mi-github"><span class="resaltado">GITHUB: </span> <a href="<?php echo $programador['link_github']; ?>" target="_blank"><?php echo $programador['link_github'] ?></a> <br>
 
             <ul class="tecnologias">
                 <h2 class="resaltado">Tecnologías que manejo</h2>
-                <li>SQL</li>
-                <li>Python</li>
-                <li>Java</li>
+                <?php
+
+                $lenguajes = explode(',', $programador['lenguajes']);
+
+                foreach ($lenguajes as $lenguaje) {
+
+                    echo "<li>$lenguaje</li>";
+                }
+
+                ?>
             </ul>
         </div>
-        <a href="#" class="btn-editar">Editar</a>
+        <a href="#" class="btn-editar">Editar</a> <!---n0 funciona!--->
     </div>
 
 

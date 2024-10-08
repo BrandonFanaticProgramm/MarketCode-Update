@@ -1,0 +1,109 @@
+:root {
+    --50: #fdf3ff;
+    --100: #fae2ff;
+    --200: #f5cbff;
+    --300: #eea2ff;
+    --400: #e367ff;
+    --500: #da2dff;
+    --600: #cf06ff;
+    --700: #bb00f8;
+    --800: #8e00b6;
+    --900: #8002a1;
+    --950: #5b007b;
+}
+
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    text-align: center;
+    margin: 30px 0; /* Separación adecuada del encabezado */
+}
+
+h1 {
+    color: white;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+p.lead {
+    font-size: 1.2em;
+    color: white;
+}
+
+/* Estilos del formulario */
+form {
+    background-color: rgb(15, 13, 13);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto; /* Centra el formulario horizontalmente */
+}
+
+/* Layout en grid para los checkboxes */
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas fijas */
+    gap: 10px; /* Espacio entre los checkboxes */
+    margin-top: 20px; /* Espaciado entre el título y los checkboxes */
+}
+
+label {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 1em;
+    color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+label:hover {
+    background-color: var(--800);
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2); /* Checkboxes más grandes */
+}
+
+/* Estilo del botón */
+button[type="submit"] {
+    background-color: var(--900);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--950);
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+    .checkbox-group {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas para pantallas más pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .checkbox-group {
+        grid-template-columns: repeat(1, 1fr); /* 1 columna en pantallas muy pequeñas */
+    }
+}

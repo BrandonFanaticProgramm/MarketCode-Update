@@ -6,7 +6,6 @@ ini_set('display_errors', 1);
 $id_programador = intval($_GET['id_programador']);  // Asegúrate de convertirlo a entero para mayor seguridad
 $id_cliente = intval($_GET['id_cliente']);
 
-echo $id_cliente;
 // Consulta para obtener información del programador
 $consulta = "SELECT Programadores.id_programador, Usuarios.Nombre, Usuarios.Apellido
              FROM Programadores 
@@ -137,7 +136,9 @@ function añadirPlanes($plan, &$precio, &$descripcion_servicio, &$numero_entrega
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="shortcut icon" href="../../landing-page/images/logo.png" type="image/x-icon">
+    <title>Planes Programador</title>
+
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -224,9 +225,6 @@ function añadirPlanes($plan, &$precio, &$descripcion_servicio, &$numero_entrega
                     <footer class="btn-comprar">
                         <div class="boton">
                         <a href="../../Contratacion/Contratacion.php?id_cliente=<?php echo $id_cliente; ?>&id_programador=<?php echo $id_programador; ?>&id_servicio=<?php echo $id_servicio_basico; ?>" class="btn-comprar">Comprar</a>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
-                            </svg>
                         </div>
                     </footer>
                 </div>
@@ -297,9 +295,6 @@ function añadirPlanes($plan, &$precio, &$descripcion_servicio, &$numero_entrega
                     <footer class="btn-comprar">
                         <div class="boton">
                         <a href="../../Contratacion/Contratacion.php?id_cliente=<?php echo $id_cliente; ?>&id_programador=<?php echo $id_programador; ?>&id_servicio=<?php echo $id_servicio_estandar; ?>" class="btn-comprar">Comprar</a>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
-                            </svg>
                         </div>
                     </footer>
                 </div>
@@ -373,9 +368,6 @@ function añadirPlanes($plan, &$precio, &$descripcion_servicio, &$numero_entrega
                     <footer class="btn-comprar">
                         <div class="boton">
                         <a href="../../Contratacion/Contratacion.php?id_cliente=<?php  echo $id_cliente; ?>&id_programador=<?php echo $id_programador; ?>&id_servicio=<?php echo $id_servicio_premium; ?>" class="btn-comprar">Comprar</a>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
-                        </svg>
                     </div>
                     </footer>
                 </div>

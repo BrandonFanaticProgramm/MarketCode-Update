@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.querySelector('#carta-perfil .nombre').textContent = `${data.data.Nombre} ${data.data.Apellido}`;
                     document.querySelector('#carta-perfil .nacionalidad').textContent = `Pais: ${data.data.localidad}`;
                     document.querySelector('#carta-perfil .descripcion').textContent = data.data.sobre_mi;
+                    document.querySelector('#carta-perfil .especialidad').textContent = data.data.especialidad;
 
                     //Manejo de lenguajes
                     document.querySelector('.tecnologias-programador').innerHTML = "";

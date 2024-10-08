@@ -1,4 +1,5 @@
 <?php
+// INCLUYE LA CONEXION DE LA BASE DE DATOS
 include('Conexion/conexion.php');
 
 // Consulta para obtener los primeros 4 programadores
@@ -18,6 +19,7 @@ $resultado = $conexion->query($consulta);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MarketCode</title>
+    <link rel="shortcut icon" href="./landing-page/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="landing-page/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -33,13 +35,12 @@ $resultado = $conexion->query($consulta);
             <nav class="botones-navegacion">
                 <div class="logo"></div>
                 <ul class="btns-izquierda">
-                    <li><a href="#">Ver Perfiles</a></li>
-                    <li><a href="#">Contáctanos</a></li>
+                    <li><a href="https://www.facebook.com/profile.php?id=61565490410763">Contáctanos</a></li>
                 </ul>
                 <ul class="btns-derecha">
                     <li class="btn-login"><a href="Sesion-Registro/Iniciar-Sesion/index.php">Inicia Sesión</a></li>
                     <li class="btn-registrar"><a href="Sesion-Registro/Registrarse/signUp.php">Registrarse</a></li>
-                    <li class="btn-registrar"><a href="Admin/Principal.php">Administrador</a></li>
+                    <li class="btn-registrar"><a href="Admin/admin_login.php">Administrador</a></li>
                 </ul>
             </nav>
         </header>
@@ -75,6 +76,7 @@ $resultado = $conexion->query($consulta);
         <div class="cartas">
             <?php
             if ($resultado->num_rows > 0) {
+                //SI ENCUENTRA RESULTADOS DE LA CONSULTAS QUE CREE LOS 4 PERFILES
                 while ($programador = $resultado->fetch_assoc()) {
                     echo '
                             <article class="carta">
@@ -101,22 +103,24 @@ $resultado = $conexion->query($consulta);
     <footer class="footer-page">
         <div class="social-media w-100 bg-black p-4 d-flex justify-content-around">
             <p class="text-white text-center my-3">Puedes visitar nuestras redes sociales:</p>
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61565490410763"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com/marketcodedev/"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://x.com/MarketCodeDev?mx=2"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href=""><i class="fa-brands fa-whatsapp"></i></a>
             <a href="#"><i class="fa-brands fa-github"></i></a>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded',() => {
+        /* SCRIPT QUE SI SE DA VISITAR EL EN PERFIIL DEL PROGRAMADOR
+        SE REDIRIJA AL FORMULARIO DE REGISTRO*/
+        document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.ver-perfil').forEach(boton => {
 
-               boton.addEventListener('click', () => {
+                boton.addEventListener('click', () => {
 
-                window.location.href = 'Sesion-Registro/Registrarse/signUp.php';
-               })
+                    window.location.href = 'Sesion-Registro/Registrarse/signUp.php';
+                })
             })
         })
     </script>
